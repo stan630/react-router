@@ -8,10 +8,12 @@ const About = () => {
         <img src={bgImg} className='about-hero-image'l />
         <div className='about-page-content'>
             <h1>Don't squeeze in a sedan when you could relax in a van</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur vel sint aut voluptatem nihil odio numquam distinctio accusamus veritatis, nulla dolor sequi dolores fuga animi a laboriosam illo! Accusantium, quia.</p>
+            <p>Our mission is to enliven your road trip with the perfect travel van rental. Our vans are recertified before each trip to ensure your travel plans can go off without a hitch. (Hitch costs extra 😉)</p>
+            <p>Our team is full of vanlife enthusiasts who know firsthand the magic of touring the world on 4 wheels.</p>
+            
         </div>
         <div className='about-page-cta'>
-            <h2>Your destinatin is waiting.<br />Your van is ready!</h2>
+            <h2>Your destination is waiting.<br />Your van is ready!</h2>
             <Link className='link-button' to="/vans">Explore our vans</Link>
         </div>
 
