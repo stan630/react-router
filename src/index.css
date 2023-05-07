@@ -1,34 +1,3 @@
-Skip to content
-Search or jump to…
-Pulls
-Issues
-Codespaces
-Marketplace
-Explore
- 
-@stan630 
-scrimba
-/
-learn-react-router-6
-Public
-Fork your own copy of scrimba/learn-react-router-6
-Code
-Issues
-Pull requests
-Actions
-Projects
-Security
-Insights
-Beta Try the new code view
-learn-react-router-6/01 - Introduction to React Router/01 - Introduction to React Router 6/index.css
-@lkrryba
-lkrryba starter files
-Latest commit c298f7b on Mar 2
- History
- 1 contributor
-742 lines (615 sloc)  11.7 KB
- 
-
 * {
     box-sizing: border-box;
 }
@@ -37,8 +6,7 @@ html,
 body {
     margin: 0;
     padding: 0;
-    background-color: #fff7ed;
-    font-family: "Inter", sans-serif;
+    
 }
 
 a {
@@ -46,9 +14,6 @@ a {
     color: unset;
 }
 
-body::-webkit-scrollbar {
-    display: none;
-}
 
 body {
     -ms-overflow-style: none;
@@ -83,8 +48,26 @@ header a {
     padding: 5px 20px;
 }
 
-header a:hover {
+a.active-link {
+    font-weight:bold;
+    text-decoration: underline;
     color: #161616;
+}
+.a.host-active {
+    font-weight: bold;
+    text-decoration: underline;
+    color: #161616;
+}
+
+a {
+    color: #161616;
+    text-decoration:none;
+    padding: 15px;
+}
+
+a:hover {
+    color: red;
+    font-weight: bold;
     text-decoration: underline;
 }
 
@@ -100,6 +83,10 @@ header .login-link {
 
 nav {
     display: flex;
+}
+
+.my-link {
+    color: red;
 }
 
 main {
@@ -149,7 +136,7 @@ footer {
 /*** HOME PAGE ***/
 .home-container {
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.46), rgba(0, 0, 0, 0.46)),
-        url("./assets/images/home-hero.png") no-repeat center center;
+        url("./assets/home-hero.png") no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -323,6 +310,7 @@ i[class*="van-type-"] {
 
 .van-detail-container {
     padding-inline: 27px;
+    
 }
 
 .van-detail-container .back-button {
