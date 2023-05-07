@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { Fragment } from 'react'
+import { Link } from 'react-router-dom'
 
 const Income = () => {
   return (
-    <h1>Income Page here.</h1>
+    <Fragment>
+        <h1>Income Page here.</h1>
+        
+    </Fragment>
   )
 }
 
