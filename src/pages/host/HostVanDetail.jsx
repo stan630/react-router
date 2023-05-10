@@ -5,6 +5,7 @@ import { useParams,Link, NavLink, Outlet } from "react-router-dom";
 const HostVanDetail = () => {
   const { id } = useParams();
   const [currentVan, setCurrentVan] = useState(null);
+  const [count, setCount] = useState(0)
 
   const activeStyles = {
     fontWeight: "bold",
@@ -65,7 +66,7 @@ const HostVanDetail = () => {
                     Photos
                 </NavLink>
             </nav>
-            <Outlet />
+            <Outlet context={{currentVan}} />
         </div>
     </section>
   )
