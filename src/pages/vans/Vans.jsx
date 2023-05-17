@@ -33,7 +33,7 @@ const Vans = () => {
     <div key={van.id} className="van-tile">
       <Link 
             to={van.id} 
-            state={{search: `?${searchParams.toString()}`}}>
+            state={{search: `?${searchParams.toString()}`,type: typeFilter}}>
         <img src={van.imageUrl} style={{ width: 200 }} />
         <div className="van-info">
           <h3>{van.name}</h3>
@@ -65,7 +65,7 @@ const Vans = () => {
             <button 
                 onClick={() => setSearchParams({})}
                 className="van-type clear-filters">
-            Back
+            Back to all vans
             </button>
             ) : null
         }
