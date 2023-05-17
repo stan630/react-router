@@ -1,19 +1,28 @@
 import React, { useState, useEffect} from 'react'
 // useParams allow us to grab parameters in the URL
-import { useParams } from 'react-router-dom'
+import { useParams, Link, useLocation } from 'react-router-dom'
 
 const VanDetail = () => {
     const params = useParams()
+    const location = useLocation()
     const [van, setVan] = useState(null)
-    
+        
     useEffect(() => {
         fetch(`/api/vans/${params.id}`)
           .then(res => res.json())
           .then(data => setVan(data.vans))
       }, [params.id]);
+
+    const search = location.state?.search || ""
   
       return (
     <div className="van-detail-container">
+        <Link
+            to={`..${search}`}
+            relative="path"
+            className="back-button">
+            &larr; <span>Back to all vans</span>
+        </Link>
         {van ? (
             <div className="van-detail">
                 <img src={van.imageUrl}style={{width:200}} />

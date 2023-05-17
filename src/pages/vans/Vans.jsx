@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 
 const Vans = () => {
-  let [SearchParams, setSearchParams] = useSearchParams();
+  let [searchParams, setSearchParams] = useSearchParams();
   const [vans, setVans] = useState([]);
 
-  const typeFilter = SearchParams.get("type");
+  const typeFilter = searchParams.get("type");
+  console.log(searchParams.toString())
 
   function handleFilterChange(key,value) {
     setSearchParams(prevParams => {
@@ -25,12 +26,14 @@ const Vans = () => {
   }, []);
 
   const displayedVans = typeFilter
-    ? vans.filter((van) => van.type.toLowerCase() === typeFilter)
+    ? vans.filter(van => van.type.toLowerCase() === typeFilter)
     : vans;
 
-  const vanElements = displayedVans.map((van) => (
+  const vanElements = displayedVans.map(van => (
     <div key={van.id} className="van-tile">
-      <Link to={`/vans/${van.id}`}>
+      <Link 
+            to={van.id} 
+            state={{search: `?${searchParams.toString()}`}}>
         <img src={van.imageUrl} style={{ width: 200 }} />
         <div className="van-info">
           <h3>{van.name}</h3>
