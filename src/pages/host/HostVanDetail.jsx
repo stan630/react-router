@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 // useParams allow us to grab parameters in the URL
 import { useParams,Link, NavLink, Outlet } from "react-router-dom";
+import { getHostVans} from "../../api"
+
+export function loader() {
+    return getHostVans()
+}
 
 const HostVanDetail = () => {
   const { id } = useParams();

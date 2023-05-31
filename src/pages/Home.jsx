@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+
 const Home = () => {
+    
   return (
     <div className='home-container'>
         <h1 className='home-container h1'>You got the travel plans, we got the travel vans.</h1>
