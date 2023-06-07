@@ -18,12 +18,12 @@ const Login = () => {
  }
 
  return (
-    <div>
+    <div className='login-container'>
         <h1>Sign in to your account</h1>
         <form>
             <input
                 name="email"
-                onChage={handleChange}
+                onChange={handleChange}
                 type="email"
                 placeholder='email address'
                 value={loginFormData.email}

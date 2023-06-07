@@ -1,4 +1,9 @@
 import React from "react";
+import { getHostVans} from "../../api"
+
+export function loader({params}) {
+    return getHostVans(params.id)
+}
 
 const Dashboard = () => {
   return (

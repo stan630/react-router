@@ -1,31 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 // useParams allow us to grab parameters in the URL
-import { useParams,Link, NavLink, Outlet } from "react-router-dom";
+import { useParams,Link, NavLink, Outlet, useLoaderData } from "react-router-dom";
 import { getHostVans} from "../../api"
+import { requireAuth } from "../../utils";
 
-export function loader() {
-    return getHostVans()
+export async function loader({params}) {
+    await requireAuth()
+    return getHostVans(params.id)
 }
 
 const HostVanDetail = () => {
-  const { id } = useParams();
-  const [currentVan, setCurrentVan] = useState(null);
-  const [count, setCount] = useState(0)
+  const { id }  = useParams();
+
+  const currentVan = useLoaderData()
 
   const activeStyles = {
     fontWeight: "bold",
     textDecoration: "underline",
     color: "#161616",
-  }
-
-  useEffect(() => {
-    fetch(`/api/host/vans/${id}`)
-      .then(res => res.json())
-      .then(data => setCurrentVan(data.vans));
-  }, []);
-
-  if (!currentVan) {
-    return <h1>Loading...</h1>
   }
 
   return (
@@ -42,6 +34,7 @@ const HostVanDetail = () => {
                 <img src={currentVan.imageUrl} width={150} />
                 <div className="host-van-detail-info-text">
                     <i className={`van-type van-type-${currentVan.type}`}>
+                        {currentVan.type}
                     </i>
                     <h3>{currentVan.name}</h3>
                     <h4>${currentVan.price}/day</h4>
