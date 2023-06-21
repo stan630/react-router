@@ -1,13 +1,24 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, {useState} from 'react'
+import { useLoaderData } from 'react-router-dom'
+import { loginUser } from '../api'
+
+export function loader ({ request }) {
+    return new URL(request.url).searchParams.get("message")
+}
 
 const Login = () => {
- const [loginFormData, setLoginFormData] = useState({email:"",password: ""})
-
- function handleSubmit(e) {
+   const [loginFormData, setLoginFormData] = useState({ email: "", password: ""})
+   const [status, setStatus] = useState("idle")
+  const message = useLoaderData
+  
+function handleSubmit(e) {
     e.preventDefault()
-    console.log(loginFormData)
- }
+    setStatus("submitting")
+    loginUser(loginFormData)
+        .then(data => console.log(data))
+        .catch()
+        .finally(() => setStatus("idle"))
+}
 
  function handleChange(e) {
     const { name, value } = e.target
@@ -20,20 +31,26 @@ const Login = () => {
  return (
     <div className='login-container'>
         <h1>Sign in to your account</h1>
-        <form>
+         {message &&
+            <h3 className='red'>Please sign in first.</h3> }   
+        <form onSubmit={handleSubmit}className='login-form'>
             <input
                 name="email"
                 onChange={handleChange}
                 type="email"
-                placeholder='email address'
+                placeholder='Email address'
                 value={loginFormData.email}
             />
             <input 
-                type="email"
+                name="password"
+                type="password"
                 onChange={handleChange}
-                placeholder='password' 
+                placeholder='Password' 
                 value={loginFormData.password}
             />
+            <button disabled={status==="submitting"}>
+                {status === "submitting" ? "Logging in..." : "Log in"} 
+            </button>
         </form>
     </div>
  )

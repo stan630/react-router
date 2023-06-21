@@ -8,6 +8,7 @@ const HostLayout = () => {
     textDecoration: "underline",
     color: "#161616",
   };
+  
   return (
     <div>
       <nav className="host-nav">
@@ -28,7 +29,7 @@ const HostLayout = () => {
 
         <NavLink
           to="vans"
-          style={({ isActive }) => (isActive ? activeStyles : null)}
+          style={({ isActive }) => isActive ? activeStyles : null}
         >
           Vans
         </NavLink>
